@@ -1,0 +1,73 @@
+﻿@model SearchViewModel
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 h1">Travel Now</span>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link active mr-2" asp-action="Index" asp-controller="Home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mr-2" asp-action="NewListing" asp-controller="Listing">List Property</a>
+            </li>
+            <li class="nav-item">
+                @if(Model.LoggedIn == 0)
+                {
+                    <a class="nav-link mr-2" asp-action="SignUp" asp-controller="Login">Sign Up</a>
+                }
+                else
+                {
+                    <a class="nav-link mr-2" asp-action="Profile" asp-controller="Home">Profile</a>
+                }
+            </li>
+            <li class="nav-item"></li>
+                @if(Model.LoggedIn == 0)
+                {
+                    <a class="nav-link" asp-action="Login" asp-controller="Login">Login</a>
+                } else
+                {
+                    <a class="nav-link" asp-action="Logout" asp-controller="Home">Logout</a>
+                }
+            </li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section class="jumbotron bg-image">
+        <h1 class="display-4">Welcome to Travel Now</h1>
+        <p class="lead ml-3">Helping you find your next destinition.<p>
+    </section>
+    <section class="container">
+        <div class="row justify-content-center">
+        <form class="col-5" asp-action="SearchResults" asp-controller="Search">
+            <div class="form-group">
+                <label class="form-label" asp-for="SearchCriteria.Location">Location</label>
+                <input type="text" class="form-control" asp-for="SearchCriteria.Location">
+            </div>
+            <div class="row">
+                <div class="col form-group">
+                    <label class="form-label" asp-for="SearchCriteria.CheckIn">Check In</label>
+                    <input type="date" class="form-control" asp-for="SearchCriteria.CheckIn">
+                </div>
+                <div class="col form-group">
+                    <label class="form-label" asp-for="SearchCriteria.CheckOut">Check Out</label>
+                    <input type="date" class="form-control" asp-for="SearchCriteria.CheckOut">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col form-group">
+                    <label class="form-label" asp-for="SearchCriteria.GuestNum"># Guests</label>
+                    <input type="number" class="form-control" asp-for="SearchCriteria.GuestNum">
+                </div>
+                <div class="col form-group">
+                    <label class="form-label" asp-for="SearchCriteria.PetFriendly">Pet Friendly</label>
+                    <input type="number" class="form-control" asp-for="SearchCriteria.PetFriendly">
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="col-6 btn btn-info mb-5">Search</button>
+                <p class="lead">Interested in <a asp-action="About" asp-controller="Listing">listing a property</a>?</p>
+            </div>
+        </form>
+        </div>
+    </section>
+</main>

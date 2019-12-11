@@ -1,0 +1,42 @@
+@model int
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 h1">Travel Now</span>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link mr-2" asp-action="Index" asp-controller="Home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mr-2" asp-action="NewListing" asp-controller="Listing">List Property</a>
+            </li>
+            <li class="nav-item">
+                @if(Model == -1)
+                {
+                    <a class="nav-link mr-2" asp-action="SignUp" asp-controller="Login">Sign Up</a>
+                }
+                else
+                {
+                    <a class="nav-link mr-2" asp-action="Profile" asp-controller="Home">Profile</a>
+                }
+            </li>
+            <li class="nav-item"></li>
+                @if(Model == -1)
+                {
+                    <a class="nav-link" asp-action="Login" asp-controller="Login">Login</a>
+                } else
+                {
+                    <a class="nav-link" asp-action="Logout" asp-controller="Home">Logout</a>
+                }
+            </li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section class="jumbotron">
+        <h1 class="display-4">Ready to List a Property?</h1>
+        <p class="lead">Use Travel Now to list short term rental properties. List your rentals, set your own price, and get ready for reservations!</p>
+        <hr>
+        <p>To get started <a class="lead" asp-action="Login" asp-controller="Login">Login</a> then create a <a class="lead" asp-action="NewListing" asp-controller="Listing">Stripe</a> account to recieve payments.</p>
+    </section>
+        
+</main>

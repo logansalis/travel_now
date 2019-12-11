@@ -1,0 +1,40 @@
+@model Credentials
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 h1">Travel Now</span>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link mr-2" asp-action="Index" asp-controller="Home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mr-2" asp-action="NewListing" asp-controller="Home">List Property</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mr-2" asp-action="SignUp" asp-controller="Login">Sign Up</a>
+            </li>
+            <li class="nav-item"></li>
+                <a class="nav-link active" asp-action="Login" asp-controller="Login">Login</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="container">
+    <section class="row justify-content-center mt-5">
+        <form class="col-4 mt-5" asp-action="Login" asp-controller="Login">
+            <h1 class="mb-4 display-4">Login</h1>
+            <div class="form-group">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control">
+                <small class="text-danger ml-1"><span asp-validation-for="Email"></span></small>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control">
+                <small class="text-danger ml-1"><span asp-validation-for="Password"></span></small>
+            </div>
+            <div class="row justify-content-center mt-3">
+                <button type="submit" class="col-6 btn btn-info">Login</button>
+            </div>
+        </form>
+    </section>
+</main>

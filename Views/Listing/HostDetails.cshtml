@@ -1,0 +1,81 @@
+@model HostViewModel
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 h1">Travel Now</span>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link mr-2" asp-action="Index" asp-controller="Home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mr-2" asp-action="NewListing" asp-controller="Listing">List Property</a>
+            </li>
+            <li class="nav-item">
+                @if(Model.LoggedIn == 0)
+                {
+                    <a class="nav-link mr-2" asp-action="SignUp" asp-controller="Login">Sign Up</a>
+                }
+                else
+                {
+                    <a class="nav-link mr-2" asp-action="Profile" asp-controller="Home">Profile</a>
+                }
+            </li>
+            <li class="nav-item"></li>
+                @if(Model.LoggedIn == 0)
+                {
+                    <a class="nav-link" asp-action="Login" asp-controller="Login">Login</a>
+                } else
+                {
+                    <a class="nav-link" asp-action="Logout" asp-controller="Home">Logout</a>
+                }
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="container">
+<main class="container mt-3">
+    <section class="row align-items-center mb-5">
+        <div class="col-2">
+            <img src="@Model.User.Avatar" alt="" style="width: 100px;">
+        </div>
+        <div class="col">
+            <h4>@Model.User.FirstName @Model.User.LastName</h4>
+            <p class="m-0">@Model.User.Email</p>
+            <p class="m-0">@Model.User.Address.City, @Model.User.Address.State</p>
+        </div>
+        <div class="col">
+            <small class="text-right"><a href="/TravelNow/Listing/Details/@Model.ListID"><< Back</a></small>
+        </div>
+    </section>
+    <section>
+        <h1 class="col mb-5">@Model.User.FirstName's Listings</h1>
+        <section style="max-height: 600px" class="overflow-auto mb-5">
+            @foreach (Listing listing in Model.Listings)
+            {
+                <div class="card mb-3" style="max-width: 600px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                        <img src="~/images/house.jpeg" class="card-img" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title m-0"><a href="/TravelNow/Listing/Details/@listing.ListingID">@listing.Title</a></h5>
+                                </div>
+                            </div>
+                            <p class="card-text">@listing.Address.City, @listing.Address.State</p>
+                            <div class="row align-items-center">
+                                <p class="col card-text m-0">$@listing.Price/Night</p>
+                                <small class="col text-muted">@listing.BedNum Beds | @listing.BathNum Baths | @listing.MaxGuests Guests</small>
+                                <!-- <p class="col card-text m-0">Rating</p> -->
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </section>
+            <!-- <a asp-action="NewListing" asp-controller="Listing" class="btn btn-lg btn-info text-white">Add Listing</a> -->
+    </section>
+</main>
+</main>

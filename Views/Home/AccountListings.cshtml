@@ -1,0 +1,66 @@
+@model User
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 h1">Travel Now</span>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link mr-2" asp-action="Index" asp-controller="Home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mr-2" asp-action="NewListing" asp-controller="Listing">List Property</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mr-2" asp-action="Profile" asp-controller="Home">Profile</a>
+            </li>
+            <li class="nav-item"></li>
+                <a class="nav-link" asp-action="Logout" asp-controller="Home">Logout</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="container mt-3">
+    <section class="row align-items-center mb-5">
+        <div class="col-1">
+            <img src="@Model.Avatar" alt="" style="width: 50px;">
+        </div>
+        <div class="col">
+            <h4>@Model.FirstName @Model.LastName</h4>
+        </div>
+    </section>
+    <section>
+        <h1 class="col mb-5">Your Property Listings</h1>
+        <section style="height: 400px" class="overflow-auto mb-5 border">
+            @foreach (Listing listing in Model.Listings)
+            {
+                <div class="card mb-3" style="max-width: 600px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                        <img src="~/images/house.jpeg" class="card-img" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title m-0"><a href="/TravelNow/Listing/Details/@listing.ListingID">@listing.Title</a></h5>
+                                </div>
+                                <div class="col-4">
+                                    <small class="card-text">
+                                        <a href="/TravelNow/Listing/Edit/@listing.ListingID">Edit</a> / 
+                                        <a class="text-danger" href="/TravelNow/Listing/Delete/@listing.ListingID">Delete</a>
+                                    </small>
+                                </div>
+                            </div>
+                            <p class="card-text">@listing.Address.City, @listing.Address.State</p>
+                            <div class="row">
+                                <p class="col-8 card-text m-0">$@listing.Price/Night</p>
+                                <!-- <p class="col card-text m-0">Rating</p> -->
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </section>
+            <a asp-action="NewListing" asp-controller="Listing" class="btn btn-lg btn-info text-white">Add Listing</a>
+    </section>
+</main>

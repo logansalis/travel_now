@@ -1,0 +1,50 @@
+@model Booking
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 h1">Travel Now</span>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link active mr-2" asp-action="Index" asp-controller="Home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mr-2" asp-action="NewListing" asp-controller="Listing">List Property</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mr-2" asp-action="Profile" asp-controller="Home">Profile</a>
+            </li>
+            <li class="nav-item"></li>
+                <a class="nav-link" asp-action="Logout" asp-controller="Home">Logout</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="container">
+    <h1 class="display-4">Listing: @Model.Listing.Title</h1>
+    <p class="lead m-0">Host: @Model.Listing.Host.FirstName @Model.Listing.Host.LastName</p>
+    <p class="lead m-0">Email: @Model.Listing.Host.Email</p>
+    <p class="lead mt-0">Listing Address: @Model.Listing.Address.StreetAddress1 @Model.Listing.Address.StreetAddress2 | @Model.Listing.Address.City, @Model.Listing.Address.State | @Model.Listing.Address.Zip</p>
+    <hr>
+    <h1 class="display-4 mb-5">Booking Summary</h1>
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <p>Check In:</p>
+            <p>Check Out:</p>
+            <p>Total Guests:</p>
+            <p>Total Pets:</p>
+            <h5>Price/Night:</p>
+            <h5>Pet Fee/Animal:</p>
+            <h5>Total:</>
+        </div>
+        <div class="col-3">
+            <p>@Model.CheckIn.ToString("MM/dd/yyyy")</p>
+            <p>@Model.CheckOut.ToString("MM/dd/yyyy")</p>
+            <p>@Model.GuestNum</p>
+            <p>@Model.PetNum</p>
+            <h5>$@Model.Listing.Price</p>
+            <h5>$20</p>
+            <h5>$@Model.Total</>
+        </div>
+    </div>
+    <hr>
+    <a class="btn btn-lg btn-success text-white" href="/TravelNow/Booking/@Model.BookingID/Confirm/Success">Confirm & Pay</a>
+</main>

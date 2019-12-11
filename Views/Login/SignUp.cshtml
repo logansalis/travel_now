@@ -1,0 +1,149 @@
+@model UserAddressViewModel
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 h1">Travel Now</span>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link mr-2" asp-action="Index" asp-controller="Home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mr-2" asp-action="NewListing" asp-controller="Listing">List Property</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mr-2 active" asp-action="SignUp" asp-controller="Login">Sign Up</a>
+            </li>
+            <li class="nav-item"></li>
+                <a class="nav-link" asp-action="Login" asp-controller="Login">Login</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="overflow-auto" style="height: 90vh">
+    <div class="container">
+    <section class="row justify-content-center mt-3">
+    <form class="col mb-5" asp-action="SignUp" asp-controller="Login">
+        <h1 class="mb-4 display-4">Sign Up</h1>
+        <div class="row">
+            <div class="col form-group">
+                <label asp-for="NewUser.FirstName" class="form-label"></label>
+                <input asp-for="NewUser.FirstName" class="form-control">
+                <small class="text-danger ml-1"><span asp-validation-for="NewUser.FirstName"></span></small>
+            </div>
+            <div class="col form-group">
+                <label asp-for="NewUser.LastName" class="form-label"></label>
+                <input asp-for="NewUser.LastName" class="form-control">
+                <small class="text-danger ml-1"><span asp-validation-for="NewUser.LastName"></span></small>
+            </div>
+            <div class="col-3 form-group">
+                <label asp-for="NewUser.DOB" class="form-label"></label>
+                <input asp-for="NewUser.DOB" class="form-control">
+                <small class="text-danger ml-1"><span asp-validation-for="NewUser.DOB"></span></small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col form-group">
+                <label asp-for="NewUser.Email" class="form-label"></label>
+                <input asp-for="NewUser.Email" class="form-control">
+                <small class="text-danger ml-1"><span asp-validation-for="NewUser.Email"></span></small>
+            </div>
+            <div class="col form-group">
+                <label asp-for="NewUser.Password" class="form-label"></label>
+                <input asp-for="NewUser.Password" class="form-control">
+                <small class="text-danger ml-1"><span asp-validation-for="NewUser.Password"></span></small>
+            </div>
+            <div class="col form-group">
+                <label asp-for="NewUser.Confirm" class="form-label"></label>
+                <input asp-for="NewUser.Confirm" class="form-control">
+                <small class="text-danger ml-1"><span asp-validation-for="NewUser.Confirm"></span></small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col form-group">
+                <label asp-for="Address.StreetAddress1" class="form-label"></label>
+                <input asp-for="Address.StreetAddress1" class="form-control">
+                <small class="text-danger ml-1"><span asp-validation-for="Address.StreetAddress1"></span></small>
+            </div>
+            <div class="col form-group">
+                <label asp-for="Address.StreetAddress2" class="form-label"></label>
+                <input asp-for="Address.StreetAddress2" class="form-control">
+                <small class="text-danger ml-1"><span asp-validation-for="Address.StreetAddress2"></span></small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col form-group">
+                <label asp-for="Address.City" class="form-label"></label>
+                <input asp-for="Address.City" class="form-control">
+                <small class="text-danger ml-1"><span asp-validation-for="Address.City"></span></small>
+            </div>
+            <div class="col form-group">
+                <label asp-for="Address.State" class="form-label"></label>
+                <select asp-for="Address.State" class="form-control">
+                    <option value="">- Select -</option>
+                    <option value="AK">Alaska</option>
+                    <option value="AL">Alabama</option>
+                    <option value="AR">Arkansas</option>
+                    <option value="AZ">Arizona</option>
+                    <option value="CA">California</option>
+                    <option value="CO">Colorado</option>
+                    <option value="CT">Connecticut</option>
+                    <option value="DC">District of Columbia</option>
+                    <option value="DE">Delaware</option>
+                    <option value="FL">Florida</option>
+                    <option value="GA">Georgia</option>
+                    <option value="HI">Hawaii</option>
+                    <option value="IA">Iowa</option>
+                    <option value="ID">Idaho</option>
+                    <option value="IL">Illinois</option>
+                    <option value="IN">Indiana</option>
+                    <option value="KS">Kansas</option>
+                    <option value="KY">Kentucky</option>
+                    <option value="LA">Louisiana</option>
+                    <option value="MA">Massachusetts</option>
+                    <option value="MD">Maryland</option>
+                    <option value="ME">Maine</option>
+                    <option value="MI">Michigan</option>
+                    <option value="MN">Minnesota</option>
+                    <option value="MO">Missouri</option>
+                    <option value="MS">Mississippi</option>
+                    <option value="MT">Montana</option>
+                    <option value="NC">North Carolina</option>
+                    <option value="ND">North Dakota</option>
+                    <option value="NE">Nebraska</option>
+                    <option value="NH">New Hampshire</option>
+                    <option value="NJ">New Jersey</option>
+                    <option value="NM">New Mexico</option>
+                    <option value="NV">Nevada</option>
+                    <option value="NY">New York</option>
+                    <option value="OH">Ohio</option>
+                    <option value="OK">Oklahoma</option>
+                    <option value="OR">Oregon</option>
+                    <option value="PA">Pennsylvania</option>
+                    <option value="PR">Puerto Rico</option>
+                    <option value="RI">Rhode Island</option>
+                    <option value="SC">South Carolina</option>
+                    <option value="SD">South Dakota</option>
+                    <option value="TN">Tennessee</option>
+                    <option value="TX">Texas</option>
+                    <option value="UT">Utah</option>
+                    <option value="VA">Virginia</option>
+                    <option value="VT">Vermont</option>
+                    <option value="WA">Washington</option>
+                    <option value="WI">Wisconsin</option>
+                    <option value="WV">West Virginia</option>
+                    <option value="WY">Wyoming</option>
+                </select>
+                <small class="text-danger ml-1"><span asp-validation-for="Address.State"></span></small>
+            </div>
+            <div class="col form-group">
+                <label asp-for="Address.Zip" class="form-label"></label>
+                <input asp-for="Address.Zip" class="form-control">
+                <small class="text-danger ml-1"><span asp-validation-for="Address.Zip"></span></small>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <button type="submit" class="col-3 btn btn-info">Submit</button>
+        </div>
+    </form>
+    </section>
+    </div>
+</main>
